@@ -52,6 +52,7 @@ namespace myBlog.Controllers
             return View(Object);
         }
 
+        // save img each blog
         public String SaveImage(IFormFile ImageFile)
         {
 
