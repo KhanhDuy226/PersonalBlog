@@ -1,0 +1,55 @@
+@model Blog
+@{
+    ViewData["Title"] = "Create Blog";
+}
+
+
+<section class="container col-8">
+    <form method="post" enctype="multipart/form-data" autocomplete="off" asp-controller="Blog" asp-action="createblog"
+        class="container-createblog">
+        <h1 class="text-primary text-center text-capitalize pt-4">
+            New Blog
+        </h1>
+        <div class="text-field p-2 important">
+            <label asp-for="Title">Title for Blog</label>
+            <input type="text" asp-for="Title" placeholder="Enter title for blog" required />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <br>
+        <div class="title-img">
+            <label asp-for="ImageURL" class="input-label">
+                <i class="fas fa-cloud-upload-alt icon-upload"></i> Background image for blog: 
+            </label>
+            <input type="file" name="ImageFileRaw" asp-for="ImageURL" />
+        </div>
+        <br>
+        <div class="text-field p-2 important">
+            <label asp-for="Content">Content of Blog</label>
+            <textarea asp-for="Content" cols="30" rows="10"></textarea>
+        </div>
+        <button type="submit" id="btn-login" class="form-control btn btn-dark btn-submit m-4">Create Blog</button>
+    </form>
+
+</section>
+
+
+<script src="//cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script>
+<script>
+    let editor = CKEDITOR.replace("Content", {
+        height: 600,
+        baseFloatZIndex: 10005,
+    });
+</script>
+@if (ViewData["Errors"] != null)
+{
+    foreach (string message in ViewBag.Errors)
+    {
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "@message"
+            });
+        </script>
+    }
+}

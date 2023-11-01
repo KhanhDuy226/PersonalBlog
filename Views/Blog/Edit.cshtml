@@ -1,0 +1,104 @@
+@model Blog
+@{
+    ViewData["Title"] = "Edit Blog";
+}
+
+
+<section class="container col-8">
+    <form method="post" enctype="multipart/form-data" autocomplete="off" asp-controller="Blog" asp-action="edit"
+        class="container-edit">
+
+        <input type="hidden" asp-for="ImageURL">
+        <input type="hidden" asp-for="ID">
+        <h1 class="text-primary text-center text-capitalize pt-4">
+            Edit Blog
+        </h1>
+        <div class="text-field p-2 important">
+            <label asp-for="Title">Title for Blog</label>
+            <input type="text" asp-for="Title" placeholder="Enter title for blog" required />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <br>
+        <div class="title-img">
+            <label asp-for="ImageURL" class="input-label ">
+                <i class="fas fa-cloud-upload-alt icon-upload"></i> New Background:
+            </label>
+            <input type="file" accept="image/*" name="ImageFileRaw" asp-for="ImageURL" />
+        </div>
+        <br>
+        <div class="text-field p-2 important">
+            <label asp-for="Content">Content of Blog</label>
+            <textarea asp-for="Content" cols="30" rows="10"></textarea>
+        </div>
+
+        <button type="submit" id="btn-login" class="form-control btn btn-dark btn-submit ">Update Blog</button>
+    </form>
+    <br>
+
+    <a asp-controller="Blog" asp-action="delete" asp-route-blog_id="@Model.ID">
+        <button class="form-control btn btn-danger">
+            Delete this Blog
+        </button>
+    </a>
+</section>
+
+<script>
+
+    $(".container-edit").submit((e) => {
+
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+
+                $(e.target).submit();
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info');
+                window.location.href = "https://localhost:5001/admin/home"
+            }
+        });
+    });
+
+</script>
+
+<script>
+    $(".container-delete").submit((e) => {
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to delete this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $(e.target).submit();
+                Swal.fire(
+                    'Deleted!',
+                    'This blog has been deleted.',
+                    'success'
+                )
+            }
+        })
+    });
+</script>
+
+<script src="//cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script>
+
+<script>
+    let editor = CKEDITOR.replace("Content", {
+        height: 600,
+        baseFloatZIndex: 10005,
+    });
+</script>

@@ -1,0 +1,75 @@
+@{
+	ViewData["Title"] = "Login Page";
+}
+@model Account
+<link rel="stylesheet" href="sweetalert2.min.css">
+<link rel="stylesheet" href="~/css/stylelogin.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+
+<img class="brightness"
+	src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80"
+	alt="">
+<div class="login-form" asp-action="login">
+	<h1>Login</h1>
+	<div class="container-fluid">
+		<form asp-action="login" method="POST">
+			<div class="form-group">
+				<label for="username" class="user-input-icon">
+					<ion-icon class="icon-user-login" name="person-circle-outline"></ion-icon>
+					Email
+				</label>
+				<input type="email" class="form-control" asp-for="Email" placeholder="Username">
+				<span asp-validation-for="Email" class="text-validate"></span>
+			</div>
+
+			<div class="form-group">
+				<label for="password" class="user-input-icon">
+					<ion-icon class="icon-password-login" name="key-outline"></ion-icon>
+					Password
+				</label>
+				<input type="password" class="form-control" asp-for="Password" placeholder="Password">
+				<span asp-validation-for="Password" class="text-validate"></span>
+			</div>
+
+			<div class="form-group">
+				<hr>
+				<button type="submit" id="btn-login" class="form-control btn btn-primary btn-submit px-3">Login</button>
+			</div>
+			<br>
+			<div class="form-group social-login">
+				<div class="social-share">
+					<div class="social-share-item facebook">
+						<i class="fab fa-facebook social-share-icon"></i>
+						<span class="social-share-text">Facebook</span>
+					</div>
+					<div class="social-share-item instagram">
+						<i class="fab fa-instagram social-share-icon"></i>
+						<span class="social-share-text">Instagram</span>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</div>
+@if (ViewData["ErrorMessage"] != null)
+{
+	<script>
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: '@ViewData["ErrorMessage"]',
+		});
+	</script>
+}
+
+<script>
+	var finalTextError = "";
+	const errorItems = document.getElementsByClassName('text-validate');
+	console.log(errorItems);
+	for (item in errorItems) {
+		finalTextError = finalTextError + item.innerText;
+	}
+	console.log(finalTextError);
+</script>

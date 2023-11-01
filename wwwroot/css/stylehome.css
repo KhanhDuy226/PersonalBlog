@@ -1,0 +1,315 @@
+body {
+  background-color: rgb(229, 228, 226);
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.navbar-total {
+  right: 0;
+  left: 0;
+  background: var(--exDark);
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-header {
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+}
+.navbar-brand {
+  color: white;
+  font-size: 2rem;
+  display: block;
+  text-align: center;
+  font: serif;
+}
+.navbar-nav-menu {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+}
+
+.navbar-nav-menu > a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  color: white;
+  padding: 1rem;
+  transition: opacity 0.8s ease;
+  align-self: center;
+}
+.navbar-nav-menu a:hover {
+  background-color: var(--dark);
+  border-radius: 10%;
+}
+.option-menu {
+  color: #fff;
+  margin: 0 1rem;
+  padding-left: 1rem;
+  align-self: center;
+  cursor: pointer;
+}
+
+.dropdown__selected {
+  font-size: 1.5em;
+}
+
+.dropdown__list li:hover {
+  background-color: rgb(55, 55, 55);
+}
+
+.dropdown__list {
+  padding-top: 20px;
+  display: none;
+  list-style: none;
+  z-index: 3;
+  position: relative;
+}
+
+.option-menu:hover .dropdown__list {
+  position: absolute;
+  display: block;
+  right: 0;
+  background: var(--exDark);
+}
+.dropdown__item {
+  display: flex;
+  flex-direction: row;
+  width: 150px;
+  text-align: left;
+  padding: 10px;
+  background: transparent;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown__text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+
+/* CSS for banner */
+.banner {
+  display: flex;
+  min-height: 60vh;
+  background-image: url("../image/image02.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.banner-title {
+  font-size: 3rem;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+.banner-title span {
+  font-size: 3rem;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+.banner p {
+  text-transform: capitalize;
+  font-size: 120%;
+  color: whitesmoke;
+  font-weight: 500;
+}
+.search-blog {
+  background-color: white;
+  border-radius: 2rem;
+  padding: 1rem;
+  font-family: sans-serif;
+  transition: all 0.5s ease;
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: 2rem auto;
+}
+
+.search-blog input {
+  width: 100%;
+  font-size: 1.2rem;
+  border: none;
+}
+.search-btn {
+  font-size: 120%;
+  border: none;
+  cursor: pointer;
+}
+.blog-component {
+  padding: 0;
+}
+.blog-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 0 10%;
+}
+.blog-title p {
+  text-align: center;
+  text-transform: capitalize;
+  color: black;
+  padding: 1rem;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+.blog-title-recent {
+  text-align: center;
+  padding: 0.5rem 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  font-family: var(--Playfair);
+}
+.blog-item {
+  cursor: pointer;
+  margin: 1.5rem 0;
+}
+.blog-item:hover img {
+  transform: scale(1.2);
+}
+.blog-img {
+  position: relative;
+  overflow: hidden;
+}
+.blog-img img {
+  transition: all 0.5s ease;
+}
+.blog-img::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.num-view:first-of-type {
+  z-index: 1;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #2b2b2b;
+  color: #fff;
+  padding: 0.25rem 1rem;
+}
+.btn-edit:first-of-type {
+  font-size: 1rem;
+  z-index: 2;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #2b2b2b;
+  color: #fff;
+  padding: 0.25rem 1rem;
+}
+.btn-slide {
+  text-align: center;
+}
+.slide-show {
+  padding-bottom: 20px;
+}
+
+/* footer */
+footer {
+  background: var(--exDark);
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+  margin-top: 1rem;
+}
+.latest-blog vh-50 {
+  max-height: 30vh;
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+.social-links a {
+  border: 2px solid #fff;
+  color: #fff;
+  display: block;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  text-decoration: none;
+  margin: 0 0.3rem;
+  transition: all 0.5s ease;
+}
+
+.social-links a:hover {
+  background: #fff;
+  color: var(--exDark);
+}
+.footer span {
+  display: block;
+  font-family: var(--Playfair);
+  letter-spacing: 2px;
+}
+.container-fluid {
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .blog-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .blog-component {
+    padding: 0;
+  }
+  .navbar-nav-menu {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: space-between;
+  }
+  .num-view:first-of-type {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+    background: #2b2b2b;
+    color: #fff;
+    padding: 1px 2px;
+  }
+}
